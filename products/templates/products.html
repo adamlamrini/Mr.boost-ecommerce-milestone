@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<!-- ========================= SECTION INTRO ========================= -->
+<section id="intro" class="section-intro bg-white pt-5">
+<div class="container">
+	<div class="row d-flex" style="min-height:600px;">
+	<div class="col-sm-6 d-flex align-items-center">
+		<header class="intro-wrap text-dark">
+			<h4 class="display-4"> <b>BUILD MUSCLE, INCREASE STRENGTH AND CHALLENGE YOUR LIMITS</b></h4>
+			
+			<a href="/" class="btn btn-dark">Start Shopping!</a>
+		</header>  <!-- intro-wrap .// -->
+	</div> <!-- col.// -->
+	<div class="col-sm-6 text-right">
+		<img src="../media/images/start.jpg" class="img-fluid my-5" width="500">	
+	</div> <!-- col.// -->
+	</div> <!-- row.// -->
+</div> <!-- container .//  -->
+</section>
+<!-- ========================= SECTION INTRO END// ========================= -->
+<br/>
+<header class="section-heading text-center">
+<h5 class="display-4"> Our Products </h5>
+</header><!-- sect-heading -->
+<br/><br/><br/>
+<div class="row row-flex">
+    {% for product in products %}
+        <div class="col-xs-10 col-xs-offset-1 col-sm-offset-0 col-sm-6 col-md-4 display panel panel-default">
+            <div class="panel-body">
+                <div class="product" style="background-image: url('{{ MEDIA_URL }}{{ product.image }}')"></div>
+
+                <h3>{{ product.name }}</h3>
+                <p class="product-description">{{ product.description }}</p>
+                <p>{{ product.price }}</p>
+
+                <form method="post" action="{% url 'add_to_cart' product.id %}">
+                    {% csrf_token %}
+                    <div class="input-group">
+                        <input name="quantity" type="number" min="1" max="999" class="form-control" placeholder="Quantity">
+                        <span class="input-group-btn">
+                            <button class="btn btn-success" type="submit">Add</button>
+                        </span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}
