@@ -71,4 +71,4 @@ Development: is using Git commands to upload the file used in the making of the 
 this webapp was inspired by :  https://gympower.co.uk/ and https://courses.codeinstitute.net/miniproject
 
 
-# Mr.boost-ecommerce-milestone
+
