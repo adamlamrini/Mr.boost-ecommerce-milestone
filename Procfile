@@ -1,1 +1,1 @@
-web: gunicorn django_Mr.boost-ecommerce-milestone.wsgi:application
+web: gunicorn ecommerce.wsgi:application
